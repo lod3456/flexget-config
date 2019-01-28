@@ -1,0 +1,84 @@
+variables: secrets.yml
+
+web_server: yes
+
+templates:
+  global:
+    notify:
+      task:
+        title: 'New Download'
+        template: html
+        via:
+          - email:
+              from: '{? email.user ?}'
+              to: '{? email.user ?}'
+              smtp_host: '{? email.smtp ?}'
+              smtp_port: '{? email.port ?}'
+              smtp_username: '{? email.user ?}'
+              smtp_password: '{? email.pass ?}'
+              smtp_tls: yes
+              html: yes
+  tv:
+
+    private_torrents: no
+
+    series:
+      settings:
+        tv:
+          exact: yes
+          propers: 3 days
+          set:
+            path: '{? location.shows ?}'
+      tv:
+        - SIX
+        - Billions
+        - Vikings
+        - Homeland
+        - Escape at Dannemora
+        - Ballers
+        - Rick and Morty
+        - American Horror Story
+        - Mayans M.C.
+        - Outlander
+        - Star Trek Discovery
+        - Ray Donovan
+        - American Gods
+        - The Last Ship
+        - "Shameless (US)"
+        - Taboo (UK)
+        - "The Affair"
+        - "The Girlfriend Experience"
+        - "Fear The Walking Dead"
+        - Yellowstone (2018)
+        - The Purge
+        - "The Walking Dead"
+        - Kidding
+        - "Better Call Saul"
+        - Doctor Who (2005)
+        - South Park
+        - Family Guy
+        - Veep
+        - The Passage
+        - The Last Kingdom
+        - The Orville
+        - The Grand Tour
+        - Gotham
+
+    transmission:
+      enabled: yes
+      host: '{? transmission.host ?}'
+      port: '{? transmission.port ?}'
+      username: '{? transmission.user ?}'
+      password: '{? transmission.pass ?}'
+
+tasks:
+  showrss.karmorra.info-tv:
+    priority: 7
+    rss: '{? transmission.rss ?}'
+    digest: daily email
+    template: tv
+schedules:
+  # Run every task once an hour
+  - tasks: showrss.karmorra.info-tv
+    interval:
+      hours: 3
