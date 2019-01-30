@@ -30,40 +30,10 @@ templates:
           set:
             path: '{? location.shows ?}'
       tv:
-        - SIX
-        - Billions
-        - Vikings
-        - Homeland
-        - Escape at Dannemora
-        - Ballers
-        - Rick and Morty
-        - American Horror Story
-        - Mayans M.C.
-        - Outlander
-        - Star Trek Discovery
-        - Ray Donovan
-        - American Gods
-        - The Last Ship
-        - "Shameless (US)"
-        - Taboo (UK)
-        - "The Affair"
-        - "The Girlfriend Experience"
-        - "Fear The Walking Dead"
-        - Yellowstone (2018)
-        - The Purge
-        - "The Walking Dead"
-        - Kidding
-        - "Better Call Saul"
-        - Doctor Who (2005)
-        - South Park
-        - Family Guy
-        - Veep
-        - The Passage
-        - The Last Kingdom
-        - The Orville
-        - The Grand Tour
-        - Gotham
-
+        - TVSHOW1
+        - TVSHOW2
+        - TVSHOW3
+        - TVSHOW4
     transmission:
       enabled: yes
       host: '{? transmission.host ?}'
